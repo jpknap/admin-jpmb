@@ -14,7 +14,8 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Check VPS_HOST variable
-        run: echo "VPS_HOST is: $VPS_HOST"
+        run: |
+          echo "VPS_HOST is: $VPS_HOST"
         env:
           VPS_HOST: ${{ vars.VPS_HOST }}
 
