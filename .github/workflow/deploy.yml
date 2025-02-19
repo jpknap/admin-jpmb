@@ -1,0 +1,49 @@
+name: Deploy to VPS
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout del código
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Configurar la clave SSH
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/github-actions-key
+          chmod 600 ~/.ssh/github-actions-key
+
+      # Agregar la clave SSH al agente SSH
+      - name: Start SSH Agent and Add Key
+        run: |
+          eval $(ssh-agent -s)
+          ssh-add ~/.ssh/github-actions-key
+
+      # Configurar el host SSH
+      - name: Add SSH Host to Known Hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p 5026 $VPS_HOST >> ~/.ssh/known_hosts
+
+      # Desplegar el código en el VPS
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v0.1.1
+        with:
+          host: $VPS_HOST
+          username: $VPS_USER
+          port: 5026
+          key: $SSH_PRIVATE_KEY
+          script: |
+            cd /var/www/admin-jpmb
+            git pull origin main
+            php artisan config:cache
+            php artisan route:cache
+            php artisan optimize
