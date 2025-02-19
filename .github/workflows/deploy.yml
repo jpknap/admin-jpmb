@@ -13,12 +13,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Check VPS_HOST variable
+        run: echo "$VPS_HOST"
+
+      - name: Check SSH private key
+        run: |
+          echo "$SSH_PRIVATE_KEY" | head -n 1
+
       - name: Set up SSH key
         run: |
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -p 5026 $VPS_HOST >> ~/.ssh/known_hosts
+          # Asegúrate de que el host sea accesible y verifique la clave del host
+          ssh-keyscan -t rsa -p 5026 $VPS_HOST > ~/.ssh/known_hosts
+          cat ~/.ssh/known_hosts
 
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v0.1.1
