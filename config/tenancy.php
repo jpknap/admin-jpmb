@@ -19,8 +19,8 @@ return [
     'central_domains' => [
         '127.0.0.1',
         'app.localhost',
-        'app.admin-jpmb.cl',
-        'app.admin-jpmb',
+        'app.jpmb.cl',
+        'app.jpmb',
     ],
 
     /**
