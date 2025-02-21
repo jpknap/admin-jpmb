@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\landlord\TenantResource\Pages;
+namespace App\projects\landlord\Filament\Resources\TenantResource\Pages;
 
 use App\Filament\Resources\landlord\TenantResource;
 use App\Models\User;

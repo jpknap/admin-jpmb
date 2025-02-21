@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Filament\Resources\landlord\TenantResource\Pages;
+namespace App\projects\landlord\Filament\Resources\TenantResource\Pages;
 
 use App\Filament\Resources\landlord\TenantResource;
 use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Filament\Resources\Pages\ListRecords;
 
-class EditTenant extends EditRecord
+class ListTenants extends ListRecords
 {
     protected static string $resource = TenantResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\CreateAction::make(),
         ];
     }
 }

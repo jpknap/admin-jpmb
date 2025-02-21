@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Filament\Resources\tenants;
+namespace App\projects\base\Filament\Resources;
 
 use App\Filament\Resources\common\UserResourceCommon;
-use App\Filament\Resources\tenants\UserResource\Pages\EditUser;
-use App\Filament\Resources\tenants\UserResource\Pages\CreateUser;
-use App\Filament\Resources\tenants\UserResource\Pages\ListUsers;
+use App\projects\base\Filament\Resources\UserResource\Pages\CreateUser;
+use App\projects\base\Filament\Resources\UserResource\Pages\EditUser;
+use App\projects\base\Filament\Resources\UserResource\Pages\ListUsers;
 
 class UserResource extends UserResourceCommon
 {

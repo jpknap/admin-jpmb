@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Filament\Resources\landlord\UserResource\Pages;
+namespace App\projects\landlord\Filament\Resources\UserResource\Pages;
 
-use App\Filament\Resources\common\UserResourceCommon;
 use App\Filament\Resources\landlord\UserResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;

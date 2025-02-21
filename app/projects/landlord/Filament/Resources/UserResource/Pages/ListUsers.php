@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\tenants\UserResource\Pages;
+namespace App\projects\landlord\Filament\Resources\UserResource\Pages;
 
-use App\Filament\Resources\tenants\UserResource;
+use App\Filament\Resources\landlord\UserResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 

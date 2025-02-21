@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\landlord\UserResource\Pages;
+namespace App\projects\landlord\Filament\Resources\UserResource\Pages;
 
 use App\Filament\Resources\landlord\UserResource;
 use Filament\Forms\Components\TextInput;
