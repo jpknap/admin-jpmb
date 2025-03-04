@@ -10,6 +10,7 @@ use Closure;
 use Filament\Facades\Filament;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class InitializeTenancyPanel
@@ -21,15 +22,6 @@ class InitializeTenancyPanel
 
         $this->validateRouteAccess($tenant, $path);
 
-        //check paths panels
-        if (!$tenant && (empty($path) || $path === '/')) {
-            return Redirect::to('/admin');
-        }
-
-        if ($tenant && str_contains($path, 'admin')) {
-            return Redirect::to('/base');
-        }
-
         return $next($request);
 
     }
@@ -37,12 +29,12 @@ class InitializeTenancyPanel
     private function validateRouteAccess($tenant, $path): void
     {
         if ($tenant === null) {
-            if (!str_starts_with($path, 'admin')) {
-                throw new UnauthorizedHttpException('');
+            if (str_starts_with($path, 'tenant') ) {
+                throw new NotFoundHttpException('');
             }
         } else {
             if (str_starts_with($path, 'admin')) {
-                throw new UnauthorizedHttpException('');
+                throw new NotFoundHttpException('');
             }
         }
     }
