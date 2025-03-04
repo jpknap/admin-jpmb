@@ -2,7 +2,6 @@
 
 namespace App\Providers\Filament;
 
-use App\Http\Middleware\InitializeTenancyPanel;
 use Filament\Facades\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -18,6 +17,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Stancl\Tenancy\Middleware\InitializeTenancyByDomainOrSubdomain;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -40,7 +40,7 @@ class AdminPanelProvider extends PanelProvider
         $panel
             ->default()
             ->id($isLandlord ? self::LANDLORD_PANEL : self::TENANT_PANEL)
-            ->path($isLandlord ? 'admin' : '')
+            ->path($isLandlord ? 'admin' : 'tenant')
             ->login()
             ->colors([
                 'primary' => Color::Amber,
@@ -56,7 +56,6 @@ class AdminPanelProvider extends PanelProvider
                 StartSession::class,
                 AuthenticateSession::class,
                 ShareErrorsFromSession::class,
-                InitializeTenancyPanel::class,
                 VerifyCsrfToken::class,
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
@@ -66,12 +65,12 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ]);
         if ($isLandlord) {
-            $panel->discoverPages(in: app_path('Filament/Pages/landlord'), for: 'App\\Filament\\Pages\\landlord');
-            $panel->discoverResources(in: app_path('Filament/Resources/landlord'), for: 'App\\Filament\\Resources\\landlord');
+            $panel->discoverPages(in: app_path('Projects/Landlord/Filament/Pages'), for: 'App\\Projects\\Landlord\\Filament\\Pages');
+            $panel->discoverResources(in: app_path('Projects/Landlord/Filament/Resources'), for: 'App\\Projects\\Landlord\\Filament\\Resources');
         }
         else {
-            $panel->discoverPages(in: app_path('Filament/Pages/tenants'), for: 'App\\Filament\\Pages\\tenants');
-            $panel->discoverResources(in: app_path('Filament/Resources/tenants'), for: 'App\\Filament\\Resources\\tenants');
+            $panel->discoverPages(in: app_path('Projects/Base/Filament/Pages'), for: 'App\\Projects\\Base\\Filament\\Pages');
+            $panel->discoverResources(in: app_path('Projects/Base/Filament/Resources'), for: 'App\\Projects\\Base\\Filament\\Resources');
         }
 
         return $panel;

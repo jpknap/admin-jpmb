@@ -2,18 +2,18 @@
 
 namespace App\projects\landlord\Filament\Resources\UserResource\Pages;
 
-use App\Filament\Resources\landlord\UserResource;
+use App\Projects\Landlord\Filament\Resources\UserResource;
 use Filament\Actions;
-use Filament\Resources\Pages\EditRecord;
+use Filament\Resources\Pages\ListRecords;
 
-class EditUser extends EditRecord
+class ListUsers extends ListRecords
 {
     protected static string $resource = UserResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\CreateAction::make(),
         ];
     }
 }

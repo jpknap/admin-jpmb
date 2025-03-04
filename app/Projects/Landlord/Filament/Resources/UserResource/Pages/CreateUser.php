@@ -2,7 +2,7 @@
 
 namespace App\projects\landlord\Filament\Resources\UserResource\Pages;
 
-use App\Filament\Resources\landlord\UserResource;
+use App\Projects\Landlord\Filament\Resources\UserResource;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\CreateRecord;
