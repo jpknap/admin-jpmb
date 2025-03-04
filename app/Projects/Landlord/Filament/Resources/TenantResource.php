@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Filament\Resources\landlord;
-
-use App\Filament\Resources\landlord;
+namespace App\Projects\Landlord\Filament\Resources;
 
 use App\Models\Tenant;
+use App\Projects\Landlord\Filament\Resources\TenantResource\Pages\CreateTenant;
+use App\Projects\Landlord\Filament\Resources\TenantResource\Pages\EditTenant;
+use App\Projects\Landlord\Filament\Resources\TenantResource\Pages\ListTenants;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -64,9 +65,9 @@ class TenantResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => landlord\TenantResource\Pages\ListTenants::route('/'),
-            'create' => landlord\TenantResource\Pages\CreateTenant::route('/create'),
-            'edit' => landlord\TenantResource\Pages\EditTenant::route('/{record}/edit'),
+            'index' => ListTenants::route('/'),
+            'create' => CreateTenant::route('/create'),
+            'edit' => EditTenant::route('/{record}/edit'),
         ];
     }
 }

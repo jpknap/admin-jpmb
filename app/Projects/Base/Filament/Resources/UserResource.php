@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\landlord;
+namespace App\projects\base\Filament\Resources;
 
 use App\Filament\Resources\common\UserResourceCommon;
-use App\Filament\Resources\landlord\UserResource\Pages\CreateUser;
-use App\Filament\Resources\landlord\UserResource\Pages\EditUser;
-use App\Filament\Resources\landlord\UserResource\Pages\ListUsers;
+use App\projects\base\Filament\Resources\UserResource\Pages\CreateUser;
+use App\projects\base\Filament\Resources\UserResource\Pages\EditUser;
+use App\projects\base\Filament\Resources\UserResource\Pages\ListUsers;
 
 class UserResource extends UserResourceCommon
 {
+
     protected static ?string $slug = 'users';
 
     public static function getPages(): array

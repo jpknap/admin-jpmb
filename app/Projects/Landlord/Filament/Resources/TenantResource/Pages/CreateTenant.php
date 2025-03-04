@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Resources\landlord\TenantResource\Pages;
+namespace App\Projects\Landlord\Filament\Resources\TenantResource\Pages;
 
-use App\Filament\Resources\landlord\TenantResource;
 use App\Models\User;
+use App\Projects\Landlord\Filament\Resources\TenantResource;
 use Filament\Resources\Pages\CreateRecord;
 use Stancl\Tenancy\Database\Models\Domain;
 
