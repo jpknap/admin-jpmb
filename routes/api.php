@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Projects\Gymrat\Controllers\AuthController;
+use App\Projects\Gymrat\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomainOrSubdomain;
