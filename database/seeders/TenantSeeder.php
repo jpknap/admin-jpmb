@@ -36,6 +36,7 @@ class TenantSeeder extends Seeder
                 'name' => 'Test User',
                 'email' => 'test@example.com',
             ]);
+
             tenancy()->end();
         }
     }

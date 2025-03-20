@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(TenantSeeder::class);
+        $this->call(TenantGymRatSeeder::class);
     }
 }
